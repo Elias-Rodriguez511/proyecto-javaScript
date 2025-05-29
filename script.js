@@ -33,6 +33,10 @@ document.getElementById("studentForm").addEventListener("submit", function (e) {
     if (!valid) return;
 
     const student={name,lastName,grade};
+
+    if (grade <= 5.0){
+    document.getElementById("grade").textContent= "Este alumno debe de irse a examen";
+    }
     
     if (editingIndex=== -1) {
         
@@ -46,6 +50,7 @@ document.getElementById("studentForm").addEventListener("submit", function (e) {
 
     updateTable();
     calcularPromedio();
+    Estadisticas();
     this.reset();
 });
 
@@ -81,6 +86,7 @@ function borrarEstudiante(index) {
     students.splice(index, 1);
     updateTable();
     calcularPromedio();
+    Estadisticas();
 }
 
 function editarEstudiante(index) {
@@ -93,6 +99,9 @@ function editarEstudiante(index) {
 }
 
 const promDiv=document.getElementById("average");
+const totalDiv=document.getElementById("totalStudents");
+const examenDiv=document.getElementById("Examen");
+const eximidosDiv=document.getElementById("NoExamen");
 
 function calcularPromedio() {
     if (students.length=== 0) {
@@ -104,4 +113,21 @@ function calcularPromedio() {
     promDiv.innerHTML=`Promedio General del curso:${average.toFixed(2)}`;
 }
 
+
+function Estadisticas() {
+    if (students.length === 0) {
+        totalDiv.textContent = "Total de estudiantes: N/A";
+        examenDiv.textContent = "Estudiantes que deben rendir examen: N/A";
+        eximidosDiv.textContent = "Estudiantes eximidos: N/A";
+        return;
+    }
+    const Examen = students.filter(s => s.grade<5).length;
+    const NoExamen = students.filter(s => s.grade>=5).length;
+
+    totalDiv.textContent=`Total de estudiantes: ${students.length}`;
+    examenDiv.textContent=`Estudiantes que deben rendir examen: ${Examen}`;
+    eximidosDiv.textContent=`Estudiantes eximidos: ${NoExamen}`;
+}
+
 updateTable();
+Estadisticas();

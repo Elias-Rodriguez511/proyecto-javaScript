@@ -20,6 +20,33 @@ body{
     background-color: rgb(255, 255, 255);
 }
 
+#totalStudents{
+    font-weight: bold;
+    border: 2px solid #ff0000;
+    border-radius: 10px;
+    padding: 10px 40px;
+    margin-bottom: 30px;
+    background-color: rgb(255, 255, 255);
+}
+
+#Examen{
+    font-weight: bold;
+    border: 2px solid #ff0000;
+    border-radius: 10px;
+    padding: 10px 20px;
+    margin-bottom: 30px;
+    background-color: rgb(255, 255, 255);
+}
+
+#NoExamen{
+    font-weight: bold;
+    border: 2px solid #ff0000;
+    border-radius: 10px;
+    padding: 10px 20px;
+    margin-bottom: 30px;
+    background-color: rgb(255, 255, 255);
+}
+
 form{
     background-color: rgb(255, 233, 174);
     padding: 20px;
